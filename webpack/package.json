@@ -1,0 +1,19 @@
+{
+  "name": "webpack-testing",
+  "version": "0.0.1",
+  "description": "testing webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "SmartBro",
+  "license": "MIT",
+  "devDependencies": {
+    "bower-webpack-plugin": "^0.1.9",
+    "webpack": "^1.12.3",
+    "webpack-dev-server": "^1.12.1"
+  }
+}
