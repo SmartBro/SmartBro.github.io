@@ -1,7 +1,22 @@
-.main-wrapper(ng-controller='DomainCtrl as domain')
+.main-wrapper
     header
         .search
             i.glyphicon.glyphicon-search
-            input(type='text', ng-model='domain.url')
-    main
-        |Domain URL: {{domain.url}}
+            input(type='text', ng-model='domain.tempUrl')
+    main(ng-cloak)
+        .domain-header
+            img.logo(ng-src='{{domain.favicon}}', alt='favicon')
+            h1 {{domain.url}}
+        h3.title {{domain.title}}
+        p.category {{domain.category}}
+
+        .ranks
+            .global-rank Global Rank {{domain.globalRank}}
+            .country-rank Country Rank {{domain.countryRank}}
+            .category-rank Category Rank {{domain.categoryRank}}
+
+        .similar-sites
+            h2.similar-sites-title Similar-Sites
+            .site-card(ng-repeat='site in domain.similar track by $index')
+                img.logo(ng-src='{{site.FavIcon}}', alt='favicon')
+                span {{site.Url}}
