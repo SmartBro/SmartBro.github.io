@@ -2,8 +2,8 @@
     header
         .search
             i.glyphicon.glyphicon-search
-            input(type='text', ng-model='domain.tempUrl')
-    main(ng-cloak)
+            input(type='text', ng-model='domain.tempUrl', ng-keydown='domain.checkInput($event)')
+    main(ng-if='domain.url', ng-cloak)
         .domain-header
             img.logo(ng-src='{{domain.favicon}}', alt='favicon')
             h1 {{domain.url}}

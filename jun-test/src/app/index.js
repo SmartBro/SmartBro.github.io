@@ -2,18 +2,25 @@ angular.module('app', [])
     .constant('$', jQuery)
     .controller('DomainCtrl', DomainCtrl);
 
-DomainCtrl.$inject = ['$http', '$sce'];
+DomainCtrl.$inject = ['$http', '$log', '$sce'];
 
-function DomainCtrl($http, $sce) {
+function DomainCtrl($http, $log, $sce) {
     var vm = this;
 
-    vm.url = 'w3schools.com';
+    vm.checkInput = function(event) {
+        if (event.keyCode === 13) {
+            getInfo();
+        }
+    }
 
-    $http.get('http://api.similarweb.com/site/' + vm.url + '/rankoverview?userkey=8124610b6f24fb784f676b65b1f0ac19')
-        .success(showInfo)
-        .error(showError);
+    function getInfo() {      
+        $http.get('http://api.similarweb.com/site/' + vm.tempUrl + '/rankoverview?userkey=8124610b6f24fb784f676b65b1f0ac19')
+            .success(showInfo)
+            .error(showError);
+    }
 
     function showInfo(domain) {
+        vm.url = vm.tempUrl;
         vm.clearUrl = $sce.trustAsResourceUrl('http://' + vm.url);
         vm.favicon = $sce.trustAsResourceUrl(domain.FavIcon);
         vm.title = domain.Title;
@@ -22,12 +29,9 @@ function DomainCtrl($http, $sce) {
         vm.countryRank = domain.CountryRank;
         vm.categoryRank = domain.CategoryRank;
         vm.similar = domain.SimilarSites;
-        console.log('info:', domain);
     }
 
     function showError(error) {
-        console.error('Ooops! Error:', error);
+        $log.error('Ooops! Error:', error);
     }
-
-    console.log('Hello from DomainCtrl!');
 }
