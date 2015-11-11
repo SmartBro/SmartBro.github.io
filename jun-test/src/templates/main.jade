@@ -1,2 +1,7 @@
-.col-sm-6
-    h1 HELLO FROM OUR WEBSITE!
+.main-wrapper(ng-controller='DomainCtrl as domain')
+    header
+        .search
+            i.glyphicon.glyphicon-search
+            input(type='text', ng-model='domain.url')
+    main
+        |Domain URL: {{domain.url}}

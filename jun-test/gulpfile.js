@@ -15,7 +15,7 @@ gulp.task('connect', function () {
 });
 
 gulp.task('jade', function () {
-    gulp.src('src/**/*.jade')
+    gulp.src('src/index.jade')
         .pipe(changed('dist'))
         .pipe(jade({
             locals: {},
