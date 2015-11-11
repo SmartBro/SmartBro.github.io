@@ -29,3 +29,9 @@ build/Release
 
 # Default OS files
 **/.DS_Store
+
+# JetBrains conf directory
+**/.idea
+
+# Projects specific files
+fe-test/dist/
