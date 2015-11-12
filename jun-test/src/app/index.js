@@ -13,6 +13,10 @@ function DomainCtrl($http, $log, $sce) {
         }
     }
 
+    // TODO: delete it after styles completition
+    vm.tempUrl = 'softserve.ua';
+    getInfo();
+
     function getInfo() {      
         $http.get('http://api.similarweb.com/site/' + vm.tempUrl + '/rankoverview?userkey=8124610b6f24fb784f676b65b1f0ac19')
             .success(showInfo)
@@ -20,6 +24,7 @@ function DomainCtrl($http, $log, $sce) {
     }
 
     function showInfo(domain) {
+        $log.info('Domain Info:', domain);
         vm.url = vm.tempUrl;
         vm.clearUrl = $sce.trustAsResourceUrl('http://' + vm.url);
         vm.favicon = $sce.trustAsResourceUrl(domain.FavIcon);

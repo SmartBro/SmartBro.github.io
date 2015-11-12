@@ -3,20 +3,22 @@
         .search
             i.glyphicon.glyphicon-search
             input(type='text', ng-model='domain.tempUrl', ng-keydown='domain.checkInput($event)')
-    main(ng-if='domain.url', ng-cloak)
+    main.container-fluid(ng-if='domain.url', ng-cloak)
         .domain-header
-            img.logo(ng-src='{{domain.favicon}}', alt='favicon')
+            img.favicon(ng-src='{{domain.favicon}}', alt='favicon')
             h1 {{domain.url}}
         h3.title {{domain.title}}
         p.category {{domain.category}}
 
         .ranks
-            .global-rank Global Rank {{domain.globalRank}}
-            .country-rank Country Rank {{domain.countryRank}}
-            .category-rank Category Rank {{domain.categoryRank}}
+            .global-rank Global Rank <span>{{domain.globalRank}}</span>
+            .country-rank Country Rank <span>{{domain.countryRank}}</span>
+            .category-rank Category Rank <span>{{domain.categoryRank}}</span>
 
         .similar-sites
             h2.similar-sites-title Similar-Sites
-            .site-card(ng-repeat='site in domain.similar track by $index')
-                img.logo(ng-src='{{site.FavIcon}}', alt='favicon')
-                span {{site.Url}}
+            .row
+                .col-sm-6.col-lg-4(ng-repeat='site in domain.similar track by $index')
+                    .panel.panel-default.site-card
+                        img.logo(ng-src='{{site.FavIcon}}', alt='favicon')
+                        .site-url {{site.Url}}
