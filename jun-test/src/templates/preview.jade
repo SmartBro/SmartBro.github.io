@@ -1,2 +1,5 @@
-.iframe-wrapper
+.iframe-wrapper(ng-if='domain.clearUrl')
     iframe(ng-src="{{domain.clearUrl}}")
+
+.container-fluid.iframe-wrapper(ng-if='!domain.clearUrl')
+    h1 Search for domain info first
