@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600">
+    <link rel="stylesheet" href="./main.css">
+  </head>
+  <body ng-controller="DomainCtrl as domain">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="main-wrapper">
+          <header>
+            <div class="search"><i class="glyphicon glyphicon-search"></i>
+              <input type="text" ng-model="domain.tempUrl" ng-keydown="domain.checkInput($event)">
+            </div>
+          </header>
+          <main ng-if="domain.url" ng-cloak>
+            <div class="domain-header"><img ng-src="{{domain.favicon}}" alt="favicon" class="logo">
+              <h1>{{domain.url}}</h1>
+            </div>
+            <h3 class="title">{{domain.title}}</h3>
+            <p class="category">{{domain.category}}</p>
+            <div class="ranks">
+              <div class="global-rank">Global Rank {{domain.globalRank}}</div>
+              <div class="country-rank">Country Rank {{domain.countryRank}}</div>
+              <div class="category-rank">Category Rank {{domain.categoryRank}}</div>
+            </div>
+            <div class="similar-sites">
+              <h2 class="similar-sites-title">Similar-Sites</h2>
+              <div ng-repeat="site in domain.similar track by $index" class="site-card"><img ng-src="{{site.FavIcon}}" alt="favicon" class="logo"><span>{{site.Url}}</span></div>
+            </div>
+          </main>
+        </div>
+        <div class="iframe-wrapper">
+          <iframe ng-src="{{domain.clearUrl}}"></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="./bundle.js"></script>
+  </body>
+</html>
