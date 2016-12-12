@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Type Ahead</title>
+    <style>
+        .hl {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="search">
+    <ul class="suggestions"></ul>
+    <script>
+        const endpoint = 'https://gist.githubusercontent.com/AvraamMavridis/fc9a20315d03487a6de0/raw/fbc9a9392cd831cde3231e6034fdc64b8f75e0c0/gistfile1.txt';
+        const cities = [];
+
+        fetch(endpoint)
+                .then(blob => blob.json()).then(data => cities.push(...data));
+
+        const search = document.querySelector('.search');
+        const suggestions = document.querySelector('.suggestions');
+
+        search.addEventListener('keyup', displaySuggestions);
+
+        function filterCities (regexp) {
+            return cities.filter((place) => place.city.match(regexp) || place.state.match(regexp));
+        }
+
+        function displaySuggestions () {
+            const regexp = new RegExp(this.value, 'gi');
+            const filtered = filterCities(regexp);
+            const html = filtered.map((place) => {
+                const cityName = place.city.replace(regexp, `<span class="hl">${this.value}</span>`);
+                const stateName = place.state.replace(regexp, `<span class="hl">${this.value}</span>`);
+                return `
+                    <li>${cityName} | ${stateName}</li>
+                `;
+            }).join('');
+            suggestions.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
