@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voiceinator 5000</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        button {
+            font-family: 'Indie Flower', cursive;
+        }
+
+        .voiceinator {
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 5px 5px 10px black;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        section,
+        footer,
+        .form-group {
+            display: flex;
+        }
+
+        header {
+            text-align: center;
+            background-color: forestgreen;
+            line-height: 3;
+        }
+
+        .voiceinator section {
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+
+        footer {
+            flex-direction: row;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            background-color: forestgreen;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="voiceinator">
+        <header>
+            <h1>Voiceinator 5000</h1>
+        </header>
+        <section>
+            <select name="voice"></select>
+            <div class="form-group">
+                <label for="rate">Rate:</label>
+                <input type="range" name="rate">
+            </div>
+            <div class="form-group">
+                <label for="pitch">Pitch:</label>
+                <input type="range" name="pitch"></div>
+            <textarea name="text" cols="30" rows="10"></textarea>
+        </section>
+        <footer>
+            <button id="speak">Speak</button>
+            <button id="stop">Stop</button>
+        </footer>
+    </div>
+    <script src="speaker.js"></script>
+</body>
+</html>
