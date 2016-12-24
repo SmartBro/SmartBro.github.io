@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Follow the links</title>
+    <style>
+        body {
+            background: coral;
+        }
+
+        p {
+            padding: 30px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+        }
+
+        .highlight {
+            transition: all 0.2s;
+            border-bottom: 2px solid white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: white;
+            z-index: -1;
+            border-radius: 20px;
+            display: block;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit <a>amet</a>, consectetur adipisicing elit. Accusamus
+        at atque cupiditate, ducimus eum <a>ex</a> nam neque nesciunt optio placeat quis
+        ratione
+        repellat saepe sint sunt ut veritatis voluptates voluptatibus?
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
+        at atque cupiditate, ducimus eum ex nam <a>neque nesciunt</a> optio placeat quis
+        ratione
+        repellat saepe <a>sint sunt</a> ut veritatis voluptates voluptatibus?
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing <a>elit</a>. Accusamus
+        at atque <a>cupiditate</a>, ducimus eum ex nam neque nesciunt optio placeat quis
+        ratione
+        repellat saepe sint sunt ut veritatis voluptates voluptatibus?
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a>Accusamus</a>
+        at atque cupiditate, ducimus eum ex nam neque nesciunt optio placeat quis
+        ratione
+        repellat <a>saepe</a> sint sunt ut veritatis voluptates <a>voluptatibus</a>?
+    </p>
+    <script src="follow.js"></script>
+</body>
+</html>
